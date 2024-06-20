@@ -15,13 +15,11 @@ all: up
 build:
 	@docker compose -f ./srcs/docker-compose.yml build
 
-
 up: build
 	@docker compose -f ./srcs/docker-compose.yml up
 
-down:
-	@docker compose down
-	@docker image prune -f
+clean:
+	@docker system prune -af 
 
 #clean:
 #	@docker-compose volumes rm 

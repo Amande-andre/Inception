@@ -1,7 +1,18 @@
+version: "3.7"
+
+volumes:
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      device: /home/j/Documents/Inception/wordpress
+      o: bind
+      type: none
+
 services:
   nginx:
     build: ./requirements/nginx
-    
+
     container_name: nginx
     ports:
       - "42:80" #80: navigateur    :80 port d entre
