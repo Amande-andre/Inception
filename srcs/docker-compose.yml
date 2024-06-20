@@ -1,0 +1,15 @@
+services:
+  nginx:
+    build: ./requirements/nginx
+    
+    container_name: nginx
+    ports:
+      - "42:80" #80: navigateur    :80 port d entre
+    restart: always
+
+#prochaines etapes
+#->creer un volume pour wp 
+#->mettre un fichier html dedans
+#->sen servir avec nginx
+#changement de port 443 apres certificat ssl
+#->Makefile pour clean et exec le up --build
