@@ -12,6 +12,10 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
+#creer une boucle pour que le script ne s arrete pas 
+while true; do
+    sleep 1  
+done
 # sed -i -r "s/db1/$db_name/1"   wp-config.php
 # sed -i -r "s/user/$db_user/1"  wp-config.php
 # sed -i -r "s/pwd/$db_pwd/1"    wp-config.php

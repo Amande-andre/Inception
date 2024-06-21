@@ -5,7 +5,7 @@ RUN   apk upgrade
 
 RUN apk add mariadb 
 
-COPY ./tools/execute.sh /etc/mysql/mariadb.conf.d/50-server.cnf
-
-
+#COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN echo "ok je tourne"
+CMD [ "executable.sh" ]
 

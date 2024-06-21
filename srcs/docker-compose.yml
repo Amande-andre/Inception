@@ -32,7 +32,14 @@ services:
     image: wordpress42
     volumes:
       - wordpress:/var/www/html
-    restart: always
+    restart: no
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    image: mariadb42
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: no
 
 #prochaines etapes
 #->creer un volume pour wp 
