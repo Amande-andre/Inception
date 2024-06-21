@@ -1,21 +1,37 @@
-version: "3.7"
-
 volumes:
   wordpress:
-    name: wordpress
+    #name: wordpress
     driver: local
     driver_opts:
-      device: /home/j/Documents/Inception/wordpress
+      device: /home/j/data/WordPress
+      o: bind
+      type: none
+  mariadb:
+    #name: mariadb
+    driver: local
+    driver_opts:
+      device: /home/j/data/DB
       o: bind
       type: none
 
+networks:
+  Inception:
+    name: Inception
+
 services:
   nginx:
-    build: ./requirements/nginx
-
     container_name: nginx
+    build: ./requirements/nginx
+    image: nginx42
     ports:
-      - "42:80" #80: navigateur    :80 port d entre
+      - "42:4242" #42: navigateur    :4242 port d entre
+    restart: always
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    image: wordpress42
+    volumes:
+      - wordpress:/var/www/html
     restart: always
 
 #prochaines etapes

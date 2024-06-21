@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-all: up
+all: volumes up
 
 build:
 	@docker compose -f ./srcs/docker-compose.yml build
@@ -18,8 +18,12 @@ build:
 up: build
 	@docker compose -f ./srcs/docker-compose.yml up
 
+volumes:
+	mkdir -p /home/j/data/WordPress
+	mkdir -p /home/j/data/DB
 clean:
 	@docker system prune -af 
 
 #clean:
+
 #	@docker-compose volumes rm 
