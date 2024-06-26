@@ -24,6 +24,10 @@ volumes:
 clean:
 	@docker system prune -af 
 
-#clean:
+re: clean all
 
+
+fclean:
+	rm -rf /home/j/data
+#les volumes
 #	@docker-compose volumes rm 

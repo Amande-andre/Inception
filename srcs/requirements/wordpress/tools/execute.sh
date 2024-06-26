@@ -12,32 +12,6 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
-#creer une boucle pour que le script ne s arrete pas 
-while true; do
-    sleep 1  
-done
-# sed -i -r "s/db1/$db_name/1"   wp-config.php
-# sed -i -r "s/user/$db_user/1"  wp-config.php
-# sed -i -r "s/pwd/$db_pwd/1"    wp-config.php
-
-# wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
-
-
-
-# wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
-
-
-# wp theme install astra --activate --allow-root
-
-
-# wp plugin install redis-cache --activate --allow-root
-
-# wp plugin update --all --allow-root
-
-
- 
-# sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
-
-# mkdir /run/php
-
-# wp redis enable --allow-root
+wp config create --dbname=$DB_NAME --dbuser=$DB_USER --prompt=$DB_PASS --dbhost=$MYSQL_HOST --allow-root #--dbport=$MYSQL_PORT
+#creer une boucle pour que le script ne s arrete pas tant que le php n est pas execute
+exec php-fpm82 -F

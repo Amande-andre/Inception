@@ -5,7 +5,14 @@ RUN   apk upgrade
 
 RUN apk add mariadb 
 
-#COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN echo "ok je tourne"
-CMD [ "executable.sh" ]
+RUN apk update && apk add --no-cache \
+    mariadb-client \
+    bash
+#integrer le .env
 
+COPY ./tools/execute.sh /
+RUN  chmod +x /execute.sh
+EXPOSE 3306
+#CMD [ "ping", "localhost" ]
+#CMD [ "/execute.sh" ]
+#COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf

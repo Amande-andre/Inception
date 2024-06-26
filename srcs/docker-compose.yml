@@ -23,8 +23,12 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     image: nginx42
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - Inception
     ports:
-      - "42:4242" #42: navigateur    :4242 port d entre
+      - "443:443" #443: navigateur    :4242 port d entre
     restart: always
   wordpress:
     container_name: wordpress
@@ -32,13 +36,19 @@ services:
     image: wordpress42
     volumes:
       - wordpress:/var/www/html
-    restart: no
+    networks:
+      - Inception
+    restart: unless-stopped
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
     image: mariadb42
+    env_file:
+      - .env
     volumes:
       - mariadb:/var/lib/mysql
+    networks:
+      - Inception
     restart: no
 
 #prochaines etapes

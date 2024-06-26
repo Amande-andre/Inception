@@ -24,9 +24,11 @@ RUN apk update && apk add --no-cache \
     php82-opcache \
     php82-fileinfo
 
+EXPOSE 9000
 COPY ./tools/execute.sh /
-
+COPY ./conf/www.conf /etc/php82/php-fpm.d/www.conf
 RUN  chmod +x /execute.sh
+RUN  chmod +x /etc/php82/php-fpm.d/www.conf
 
 CMD [ "/execute.sh" ]
 #CMD [ "ping", "localhost" ]
